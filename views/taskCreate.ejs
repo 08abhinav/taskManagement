@@ -5,21 +5,26 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-    <form>
-        <div class="mb-3">
-          <label for="taskName" class="form-label">Task Name</label>
-          <input type="text" class="form-control" id="taskName" name="taskName" aria-describedby="taskName">
-        </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Task-Description</label>
-          <textarea name="description" id="description"></textarea>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="status" name="status">
-          <label class="form-check-label" for="status">Completed</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    <div class="d-flex justify-content-center mt-5 vh-100">
+      <div class="form-container w-50">
+        <form action="/task/add" method="post">
+          <div class="mb-3">
+            <label for="taskName" class="form-label fw-bold text-info fs-4">Task Name</label>
+            <input type="text" class="form-control w-100 text-info border-info bg-dark" id="taskName" name="taskName" placeholder="Enter task name">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label fw-bold text-info fs-4">Task Description</label>
+            <textarea class="form-control bg-dark text-info border-info" rows="5" id="description" name="description" placeholder="Enter task details"></textarea>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input bg-transparent border-info" id="status" name="status">
+            <label class="form-check-label fw-bolder text-info fs-5" for="status">Completed</label>
+          </div>
+          <button type="submit" class="btn btn-outline-warning w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  
     <%- include('./partials/script') %>
-
 </body>
 </html>

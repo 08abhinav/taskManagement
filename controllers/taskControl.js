@@ -1,4 +1,4 @@
-import TaskModel from "../models/tasks.js"
+import {TaskModel} from "../models/tasks.js"
 
 export async function handleTaskCreation(req, res){
     try {
@@ -10,7 +10,6 @@ export async function handleTaskCreation(req, res){
             description,
             status
         })
-
         return res.render('home')
     } catch (error) {
         res.json({message: error.message})
@@ -19,11 +18,12 @@ export async function handleTaskCreation(req, res){
 
 export async function handleTaskView(req, res){
     try {
-        const tasks = await TaskModel.find({})
+        const tasks = await TaskModel.find({});
+        console.log("Fetched Tasks:", tasks);
 
-        return res.render("taskView", {tasks})
-    } catch (error) {
-        
+        return res.render("taskView", { tasks });
+    } catch (error) {  
+        return res.json({message:"Something went wrong while fetching the tasks."}) 
     }
 }
 

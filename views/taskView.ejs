@@ -5,26 +5,28 @@
 </head>
 <body>
     <%- include('./partials/nav') %>
-        <div>
-            <table widh="200" border="1">
-                <thead>
+        <div class="container mt-4 d-flex justify-content-center">
+            <table class="table table-bordered text-center w-75">
+                <thead class="table-dark">
+                    <tr>
                     <th>Task No</th>
                     <th>Task Name</th>
                     <th>Task Description</th>
                     <th>Task Status</th>
+                    </tr>
                 </thead>
-                <tbody>
-                    <% locals.tasks.forEach(t, i => { %>
-                     <tr>
+                <tbody class="table-warning">
+                    <% tasks.forEach((t, i) => { %>
+                    <tr class="fw-bold">
                         <td><%- i+1 %></td>
-                        <td><%-t.taskName %></td>
-                        <td><%-t.description %></td>
-                        <td><%-t.status %></td>
-                     </tr>
+                        <td><%- t.taskName %></td>
+                        <td><%- t.description %></td>
+                        <td><%- t.status %></td>
+                    </tr>
                     <% }) %>
                 </tbody>
             </table>
-        </div>
+      </div>
     <%- include('./partials/script') %>
     
 </body>
