@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <form>
+        <div class="mb-3">
+          <label for="taskName" class="form-label">Task Name</label>
+          <input type="text" class="form-control" id="taskName" name="taskName" aria-describedby="taskName">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Task-Description</label>
+          <textarea name="description" id="description"></textarea>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="status" name="status">
+          <label class="form-check-label" for="status">Completed</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    <%- include('./partials/script') %>
+
+</body>
+</html>
