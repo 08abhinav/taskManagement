@@ -19,3 +19,8 @@ Optional Features:
     🗓 Timestamps: Add creation and update timestamps to each task.
     📊 Statistics: Create an endpoint to get statistics, like the total number of tasks and completed tasks.
     🔑 Authentication: Implement basic authentication to secure the API (e.g., using API keys). (use first task)
+
+# Task Prioritization – Mark tasks as high, medium, or low priority.
+🔹 Recurring Tasks – Automate repetitive tasks to save time.
+🔹 Dark Mode – Give users a comfortable viewing experience.
+🔹 File Attachments – Add documents, images, or links to tasks.

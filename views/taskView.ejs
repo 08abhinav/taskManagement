@@ -13,6 +13,7 @@
                     <th>Task Name</th>
                     <th>Task Description</th>
                     <th>Task Status</th>
+                    <th>Update Task</th>
                     </tr>
                 </thead>
                 <tbody class="table-warning">
@@ -22,6 +23,7 @@
                         <td><%- t.taskName %></td>
                         <td><%- t.description %></td>
                         <td><%- t.status %></td>
+                        <td><a href="/updateTask" class="btn btn-outline-warning">Update</a></td>
                     </tr>
                     <% }) %>
                 </tbody>
