@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Delete Task</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="form-container w-50 boder-dark shadow py-5 px-5">
+          <div class="mb-5 fw-bolder text-warning fs-4">Delete</div>
+
+          <form action="/task/taskdelete/<%- task._id %>" method="post">
+            <div class="mb-3">
+              <label for="taskName" class="form-label fw-bold text-info fs-4">Task Name</label>
+              <input type="text" class="form-control w-100 text-info border-info bg-dark" id="taskName" name="taskName" value="<%- task.taskName %>">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fw-bold text-info fs-4">Task Description</label>
+              <textarea class="form-control bg-dark text-info border-info" rows="5" id="description" name="description"><%- task.description %></textarea>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input bg-transparent border-info" id="status" name="status" <%- task.status ? "checked" : "" %>>
+              <label class="form-check-label fw-bolder text-info fs-5" for="status">Completed</label>
+            </div>
+            <button class="btn btn-outline-danger w-100">Delete Task</button>
+          </form>
+        </div>
+      </div>
+    <%- include('./partials/script') %>
+</body>
+</html>
