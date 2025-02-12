@@ -19,11 +19,40 @@ export async function handleTaskCreation(req, res){
 export async function handleTaskView(req, res){
     try {
         const tasks = await TaskModel.find({});
-        console.log("Fetched Tasks:", tasks);
+        // console.log("Fetched Tasks:", tasks);
 
         return res.render("taskView", { tasks });
     } catch (error) {  
         return res.json({message:"Something went wrong while fetching the tasks."}) 
+    }
+}
+
+
+export async function handleUpdateTask(req, res){
+    try {
+        const { taskName, description, status } = req.body;
+        const updatedTask = await TaskModel.findByIdAndUpdate(req.params.id, {
+            taskName,
+            description,
+            status: status === "on" ? true : false, // Convert checkbox value to boolean
+        }, { new: true });
+
+        if (!updatedTask) {
+            return res.status(404).json({message: "Task not found"});
+        }
+        return res.render("home"); 
+    } catch (error) {
+        return res.status(500).json({message:"Error while updateion", error:error.message});
+    }
+}
+
+export async function handleUpdateView(req, res){
+    try {
+        const task = await TaskModel.findById(req.params.id)
+        if(!task) return res.json({message:"No task found"});
+        return res.render("taskUpdate",{task})
+    } catch (error) {
+        return res.json({message:"Something went wrong while fetching the task."})
     }
 }
 

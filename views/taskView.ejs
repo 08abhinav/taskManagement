@@ -23,9 +23,9 @@
                         <td><%- t.taskName %></td>
                         <td><%- t.description %></td>
                         <td><%- t.status %></td>
-                        <td><a href="/updateTask" class="btn btn-outline-warning">Update</a></td>
+                        <td><a href="<%- t._id %>" class="btn btn-outline-warning">Update Task</a></td>
                     </tr>
-                    <% }) %>
+                    <% });%>
                 </tbody>
             </table>
       </div>
