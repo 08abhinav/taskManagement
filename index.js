@@ -1,5 +1,6 @@
+import 'dotenv/config';
 import express from "express"
-import {PORT, dbConnect} from "./config.js"
+import {dbConnect} from "./config.js"
 import path from "path"
 import staticRoute from "./routes/staticRoute.js"
 import route from "./routes/route.js"
@@ -13,7 +14,8 @@ app.use(express.json())
 app.use('/', staticRoute)
 app.use('/task', route)
 
-app.listen(PORT, ()=>console.log(`App running on port: ${PORT}`))
-dbConnect("mongodb://127.0.0.1:27017/taskManagement")
+const port = process.env.PORT || 3000
+app.listen(port, ()=>console.log(`App running on port: ${port}`))
+dbConnect(process.env.MONGO_URL)
 .then(()=> console.log("Mongodb Connected"))
 .catch((err)=>console.log(err))
