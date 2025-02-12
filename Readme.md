@@ -1,26 +1,58 @@
-Task-1: For Those Choosing Backend Development
+# Task Management System
 
-Your task is to create a simple API for a Task Manager to practice your back-end skills! 🛠💻
+## 📌 Overview
+The Task Management System is a simple API built using Node.js and Express to manage tasks efficiently. It allows users to add, view, update, and delete tasks with ease.
 
-Task Overview:
+## 🚀 Features
+- CRUD operations for tasks (Create, Read, Update, Delete)
+- Each task includes a name, description, and status (e.g., pending, completed)
+- Simple database setup for storing tasks
+- Proper error handling for invalid requests
 
-Back-End:
+## 🔧 API Endpoints
 
-    🔧 API Endpoints:
-        Create endpoints to add, view, update, and delete tasks.
-        Each task should have a name, description, and status (e.g., pending, completed).
-    💾 Database:
-        Set up a simple database  to store tasks.
-        Design a basic schema with fields for task name, description, and status.
-    🛠 Error Handling:
-        Ensure the API returns appropriate error messages for invalid requests.
+| Method | Endpoint      | Description |
+|--------|-------------|-------------|
+| POST   | `/task/add`     | Add a new task |
+| GET    | `/task/alltasks`     | View all tasks |
+| PUT    | `/task/updateTask/:id` | Update a task |
+| DELETE | `/task/taskdelete/:id` | Delete a task |
 
-Optional Features:
-    🗓 Timestamps: Add creation and update timestamps to each task.
-    📊 Statistics: Create an endpoint to get statistics, like the total number of tasks and completed tasks.
-    🔑 Authentication: Implement basic authentication to secure the API (e.g., using API keys). (use first task)
+## 💾 Database
+A simple database is used to store tasks with the following schema:
 
-# Task Prioritization – Mark tasks as high, medium, or low priority.
-🔹 Recurring Tasks – Automate repetitive tasks to save time.
-🔹 Dark Mode – Give users a comfortable viewing experience.
-🔹 File Attachments – Add documents, images, or links to tasks.
+```json
+{
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "status": "pending" | "completed"
+}
+```
+
+## 🛠 Error Handling
+- Returns appropriate error messages for invalid requests.
+- Handles missing or incorrect data gracefully.
+
+## 🏗️ Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/task-management.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd task-management
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the server:
+   ```sh
+   npm start
+   ```
+
+## 📌 Usage
+Use tools like Postman or cURL to interact with the API endpoints.
+
+
