@@ -13,10 +13,10 @@ The Task Management System is a simple API built using Node.js and Express to ma
 
 | Method | Endpoint      | Description |
 |--------|-------------|-------------|
-| POST   | `/task/add`     | Add a new task |
-| GET    | `/task/alltasks`     | View all tasks |
-| PUT    | `/task/updateTask/:id` | Update a task |
-| DELETE | `/task/taskdelete/:id` | Delete a task |
+| POST   | `/api/add`     | Add a new task |
+| GET    | `/api/alltasks`     | View all tasks |
+| PUT    | `/api/updateTask/:id` | Update a task |
+| DELETE | `/api/taskdelete/:id` | Delete a task |
 
 ## 💾 Database
 A simple database is used to store tasks with the following schema:
