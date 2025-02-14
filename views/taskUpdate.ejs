@@ -11,7 +11,7 @@
           <!-- <div class="mb-5 fw-bolder text-warning fs-4">Stay organized and productive – Add your tasks and take control of your day!</div> -->
           <div class="mb-5 fw-bolder text-warning fs-4">Update your Task</div>
 
-          <form action="updateTask/<%- task._id %>" method="post">
+          <form action="updateTask/<%- task._id %>?_method=PUT" method="POST">
             <div class="mb-3">
               <label for="taskName" class="form-label fw-bold text-info fs-4">Task Name</label>
               <input type="text" class="form-control w-100 text-info border-info bg-dark" id="taskName" name="taskName" value="<%- task.taskName %>">

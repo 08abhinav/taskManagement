@@ -3,10 +3,17 @@ import {handleDeleteView, handleTaskCreation, handleUpdateView, handleUpdateTask
 
 const route = express.Router()
 
-route.post("/add", handleTaskCreation)
-route.post("/updateTask/:id", handleUpdateTask)
-route.post("/taskdelete/:id",handleTaskDeletion )
+//creation and view route
+route.post("/tasks", handleTaskCreation)
 route.get("/alltasks", handleTaskView)
+route.get("/task/:id", )
+
+//update route
 route.get("/:id", handleUpdateView)
+route.put("/updateTask/:id", handleUpdateTask)
+
+//Delete route
 route.get("/delete/:id",handleDeleteView)
+route.delete("/taskdelete/:id",handleTaskDeletion )
+
 export default route

@@ -26,6 +26,17 @@ export async function handleTaskView(req, res){
     }
 }
 
+export async function handleSingleTaskView(req, res){
+    try {
+        const task = await TaskModel.findById(req.params.id);
+        if(!task) return res.json({message: "No tasks found"});
+
+        return res.render("singleTaskView", {task})
+    } catch (error) {
+        
+    }
+}
+
 
 export async function handleUpdateTask(req, res){
     try {
