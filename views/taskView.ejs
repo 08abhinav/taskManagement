@@ -18,11 +18,11 @@
                     <th>Delete Task</th>
                     </tr>
                 </thead>
-                <tbody class="table-warning">
+                <tbody class="table-secondary">
                     <% tasks.forEach((t, i) => { %>
                         <tr class="fw-bold">
                             <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- i + 1 %></td>
-                            <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.taskName %></td>
+                            <td  > <a href="/api/task/<%- t._id %>" class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.taskName %></a></td>
                             <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.description %></td>
                             <td class="<%= t.status ? 'text-success' : 'text-danger' %>">
                                 <% if (t.status) { %>
@@ -32,14 +32,13 @@
                                 <% } %>
                             </td>
                 
-                            <td><a href="/api/<%- t._id %>" class="btn btn-outline-warning">Update Task</a></td>
-                            <td><a href="delete/<%- t._id %>" class="btn btn-outline-danger">Delete Task</a></td>
+                            <td><a href="/api/<%- t._id %>" class="fs-3">📝</a></td>
+                            <td><a href="delete/<%- t._id %>" class="fs-3">🗑</a></td>
                         </tr>
                     <% }); %>
                 </tbody>                
             </table>
       </div>
     <%- include('./partials/script') %>
-    
 </body>
 </html>

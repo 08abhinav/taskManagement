@@ -8,9 +8,8 @@
     <%- include('./partials/nav') %>
     <div class="d-flex justify-content-center mt-5">
         <div class="form-container w-50 boder-dark shadow py-5 px-5">
-          <div class="mb-5 fw-bolder text-warning fs-4">Delete</div>
-
-          <form action="/task/taskdelete/<%- task._id %>" method="post">
+          <div class="mb-3 fw-bolder text-warning fs-4">Delete</div>
+          <form action="/api/taskdelete/<%- task._id %>?_method=DELETE" method="POST">
             <div class="mb-3">
               <label for="taskName" class="form-label fw-bold text-info fs-4">Task Name</label>
               <input type="text" class="form-control w-100 text-info border-info bg-dark" id="taskName" name="taskName" value="<%- task.taskName %>">
@@ -25,6 +24,7 @@
             </div>
             <button class="btn btn-outline-danger w-100">Delete Task</button>
           </form>
+          <a href="/api/alltasks" class="btn btn-outline-warning mt-4 w-25" >Go back</a>
         </div>
       </div>
     <%- include('./partials/script') %>

@@ -1,5 +1,6 @@
 import {TaskModel} from "../models/tasks.js"
 
+// Task Creation
 export async function handleTaskCreation(req, res){
     try {
         const {taskName, description, status} = req.body
@@ -16,6 +17,7 @@ export async function handleTaskCreation(req, res){
     }
 }
 
+// All Task View
 export async function handleTaskView(req, res){
     try {
         const tasks = await TaskModel.find({});
@@ -26,25 +28,26 @@ export async function handleTaskView(req, res){
     }
 }
 
+// Single Task View
 export async function handleSingleTaskView(req, res){
     try {
         const task = await TaskModel.findById(req.params.id);
         if(!task) return res.json({message: "No tasks found"});
 
-        return res.render("singleTaskView", {task})
+        return res.render("singleTaskView", {task:[task]})
     } catch (error) {
-        
+        return res.json({message:"Something went wrong", error:error.message})
     }
 }
 
-
+// Update Task
 export async function handleUpdateTask(req, res){
     try {
         const { taskName, description, status } = req.body;
         const updatedTask = await TaskModel.findByIdAndUpdate(req.params.id, {
             taskName,
             description,
-            status: status === "on" ? true : false, // Convert checkbox value to boolean
+            status: status === "on" ? true : false,
         }, { new: true });
 
         if (!updatedTask) {
@@ -57,6 +60,7 @@ export async function handleUpdateTask(req, res){
     }
 }
 
+// Update Single Task
 export async function handleUpdateView(req, res){
     try {
         const task = await TaskModel.findById(req.params.id)
@@ -67,6 +71,7 @@ export async function handleUpdateView(req, res){
     }
 }
 
+// Delete View
 export async function handleDeleteView(req, res){
     try {
         const task = await TaskModel.findById(req.params.id)
@@ -77,6 +82,7 @@ export async function handleDeleteView(req, res){
     }
 }
 
+// Delete Single Task
 export async function handleTaskDeletion(req, res){
     try {
         const deletedTask = await TaskModel.findByIdAndDelete(req.params.id);
