@@ -34,7 +34,7 @@ export async function handleSingleTaskView(req, res){
         const task = await TaskModel.findById(req.params.id);
         if(!task) return res.json({message: "No tasks found"});
 
-        return res.render("singleTaskView", {task:[task]})
+        return res.render("singleTaskView", {task:[task], user: req.user})
     } catch (error) {
         return res.json({message:"Something went wrong", error:error.message})
     }
@@ -65,7 +65,7 @@ export async function handleUpdateView(req, res){
     try {
         const task = await TaskModel.findById(req.params.id)
         if(!task) return res.json({message:"No task found"});
-        return res.render("taskUpdate",{task})
+        return res.render("taskUpdate",{task, user: req.user})
     } catch (error) {
         return res.json({message:"Something went wrong while fetching the task."})
     }
@@ -76,7 +76,7 @@ export async function handleDeleteView(req, res){
     try {
         const task = await TaskModel.findById(req.params.id)
         if(!task) return res.json({message:"No task found"});
-        return res.render("deleteTask",{task})
+        return res.render("deleteTask",{task, user:req.user})
     } catch (error) {
         return res.json({message:"Something went wrong while fetching the task."})
     }
