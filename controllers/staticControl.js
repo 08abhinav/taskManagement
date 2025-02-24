@@ -3,11 +3,11 @@ export const handleHome = (req, res)=>{
 }
 
 export const handleAllTaskView = (req, res)=>{
-    return res.render("taskView")
+    return res.render("taskView", {user: req.user})
 }
 
 export const handleCreateTask = (req, res)=>{
-    return res.render("taskCreate")
+    return res.render("taskCreate", {user: req.user})
 }
 
 export const handleLoginView = (req, res)=>{

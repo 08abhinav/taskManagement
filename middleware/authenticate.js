@@ -1,7 +1,16 @@
 import { validateToken } from "../services/authorization.js";
 
+function isPublic(url){
+    const publicRoutes = ['/', '/login', '/signup']
+    return publicRoutes.includes(url)
+}
+
 export function checkForUserAuthentication(cookieName){
     return (req, res, next)=>{
+        if(isPublic(req.originalUrl) || req.method === "POST"){
+            return next();
+        }
+        
         const tokenCookieValue = req.cookies[cookieName];
         if(!tokenCookieValue){
             return res.status(403).json({message: "Authentication required"})
