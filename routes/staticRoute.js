@@ -1,18 +1,16 @@
 import express from "express"
 import { handleUpdateTask } from "../controllers/taskControl.js"
+import { handleAllTaskView, handleCreateTask, 
+handleHome, handleLoginView, handleSignupView } from "../controllers/staticControl.js"
 
 const staticRoute = express.Router()
 
-staticRoute.get("/", (req, res)=>{
-    return res.render("home")
-})
+staticRoute.get("/", handleHome)
+staticRoute.get("/allTasks", handleAllTaskView)
+staticRoute.get("/createTask", handleCreateTask)
 
-staticRoute.get("/allTasks", (req, res)=>{
-    return res.render("taskView")
-})
-
-staticRoute.get("/createTask", (req, res)=>{
-    return res.render("taskCreate")
-})
+//user route
+staticRoute.get('/login', handleLoginView)
+staticRoute.get('/signup', handleSignupView)
 
 export default staticRoute
