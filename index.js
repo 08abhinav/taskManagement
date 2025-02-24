@@ -5,6 +5,7 @@ import path from "path"
 import methodOverride from "method-override"
 import staticRoute from "./routes/staticRoute.js"
 import route from "./routes/route.js"
+import userRoute from './routes/userRoute.js';
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(methodOverride("_method"))
 app.use('/', staticRoute)
+app.use('/user', userRoute)
 app.use('/api', route)
 
 const port = process.env.PORT || 3000
