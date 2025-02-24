@@ -1,7 +1,9 @@
 import express from "express"
+import { checkForUserAuthentication } from "../middleware/authenticate.js"
 import {handleDeleteView, handleTaskCreation, handleUpdateView, handleUpdateTask, handleTaskView, handleTaskDeletion, handleSingleTaskView } from "../controllers/taskControl.js"
 
 const route = express.Router()
+route.use(checkForUserAuthentication("user"))
 
 //creation and view route
 route.post("/tasks", handleTaskCreation)

@@ -1,3 +1,4 @@
+import { TaskModel } from "../models/tasks.js"
 export const handleHome = (req, res)=>{
     return res.render("home")
 }

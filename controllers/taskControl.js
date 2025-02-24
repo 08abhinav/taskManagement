@@ -22,7 +22,7 @@ export async function handleTaskView(req, res){
     try {
         const tasks = await TaskModel.find({});
         const task = tasks.sort((a, b) => a.status - b.status);
-        return res.render("taskView", { tasks:task });
+        return res.render("taskView", { tasks:task, user:req.user});
     } catch (error) {  
         return res.json({message:"Something went wrong while fetching the tasks."}) 
     }

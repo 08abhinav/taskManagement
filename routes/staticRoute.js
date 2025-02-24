@@ -9,7 +9,7 @@ staticRoute.use(cookieParser())
 
 staticRoute.get("/", handleHome)
 staticRoute.get('/dashboard', checkForUserAuthentication("user"), handleUserDashboard)
-staticRoute.get("/allTasks", checkForUserAuthentication("user"), handleAllTaskView)
+// staticRoute.get("/allTasks", checkForUserAuthentication("user"), handleAllTaskView)
 staticRoute.get("/createTask", checkForUserAuthentication("user"), handleCreateTask)
 
 //user route
