@@ -11,7 +11,7 @@ export const handleUserSignup = async(req, res)=>{
             email,
             password
         })
-        return res.render('/')
+        return res.redirect('/')
     } catch (error) {
         return res.json({message: "Something went wrong while sign up", error:error.message})
     }

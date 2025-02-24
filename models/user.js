@@ -40,4 +40,4 @@ userSchema.static("matchUserPasswordAndGenerateToken", async function(email, pas
     return token
 })
 
-const User = new model("User", userSchema)
+export const User = new model("User", userSchema)
