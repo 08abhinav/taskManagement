@@ -11,7 +11,7 @@ export const handleUserSignup = async(req, res)=>{
             email,
             password
         })
-        return res.redirect('/')
+        return res.redirect('/login')
     } catch (error) {
         return res.json({message: "Something went wrong while sign up", error:error.message})
     }
@@ -25,7 +25,7 @@ export const handleUserSiginin = async(req, res)=>{
             return res.json({message:"All fields are required"})
         }
         const user = await User.matchUserPasswordAndGenerateToken(email, password)
-        return res.cookie("user", user).redirect('/')
+        return res.cookie("user", user).redirect('/dashboard')
     } catch (error) {
         return res.json({message: "Something went wrong while user sign in", err: error.message})
     }
