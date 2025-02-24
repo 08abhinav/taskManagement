@@ -1,12 +1,12 @@
 import express from "express"
 import {checkForUserAuthentication} from "../middleware/authenticate.js"
 import { handleAllTaskView, handleCreateTask, 
-handleHome, handleLoginView, handleSignupView } from "../controllers/staticControl.js"
+handleHome, handleLoginView, handleSignupView, handleUserDashboard } from "../controllers/staticControl.js"
 
 const staticRoute = express.Router()
 
 staticRoute.get("/", handleHome)
-
+staticRoute.get('/dashboard', handleUserDashboard)
 staticRoute.get("/allTasks", checkForUserAuthentication("user"),handleAllTaskView)
 staticRoute.get("/createTask", checkForUserAuthentication("user"),handleCreateTask)
 

@@ -17,3 +17,7 @@ export const handleLoginView = (req, res)=>{
 export const handleSignupView = (req, res)=>{
     return res.render("userSignup")
 }
+
+export const handleUserDashboard = (req, res)=>{
+    return res.render("userHome", {user: req.user})
+}
