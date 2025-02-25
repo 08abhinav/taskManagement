@@ -5,7 +5,8 @@ import { createToken } from "../services/authorization.js";
 const userSchema = new Schema({
     fullName:{
         type: String, 
-        require: true
+        require: true,
+        trim: true
     },
     email:{
         type: String, 

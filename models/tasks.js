@@ -1,13 +1,18 @@
-import mongoose, { Model, Schema } from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 const taskSchema = new Schema({
     taskName:{
         type: String,
-        require: true
+        require: true,
+        trim: true
     },
     description:{
         type: String,
         require: true
+    },
+    createdBy:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
     status:{
         type: Boolean,   
