@@ -11,7 +11,7 @@ export async function handleTaskCreation(req, res){
             description,
             status
         })
-        return res.render('home')
+        return res.redirect('/dashboard')
     } catch (error) {
         res.json({message: error.message})
     }
