@@ -6,6 +6,7 @@ import { handleCreateTask, handleHome, handleLoginView,
 
 const staticRoute = express.Router()
 staticRoute.use(cookieParser())
+staticRoute.use(checkForUserAuthentication("user"))
 
 staticRoute.get("/", handleHome)
 staticRoute.get('/dashboard', checkForUserAuthentication("user"), handleUserDashboard)

@@ -8,7 +8,7 @@ route.use(cookieParser())
 route.use(checkForUserAuthentication("user"))
 
 //creation and view route
-route.post("/tasks", handleTaskCreation)
+route.post("/tasks",checkForUserAuthentication("user"), handleTaskCreation)
 route.get("/allTasks", checkForUserAuthentication("user"),handleTaskView)
 route.get("/task/:id", checkForUserAuthentication("user"),handleSingleTaskView)
 
