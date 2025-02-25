@@ -8,7 +8,6 @@ const staticRoute = express.Router()
 staticRoute.use(cookieParser())
 
 staticRoute.get("/", handleHome)
-// staticRoute.get('/allTasks',checkForUserAuthentication("user"), handleTaskView)
 staticRoute.get('/dashboard', checkForUserAuthentication("user"), handleUserDashboard)
 staticRoute.get("/createTask", checkForUserAuthentication("user"), handleCreateTask)
 
