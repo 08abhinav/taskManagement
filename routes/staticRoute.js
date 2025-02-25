@@ -1,13 +1,14 @@
 import express from "express"
 import cookieParser from "cookie-parser"
 import {checkForUserAuthentication} from "../middleware/authenticate.js"
-import { handleAllTaskView, handleCreateTask, 
-handleHome, handleLoginView, handleSignupView, handleUserDashboard } from "../controllers/staticControl.js"
+import { handleCreateTask, handleHome, handleLoginView, 
+    handleSignupView, handleUserDashboard } from "../controllers/staticControl.js"
 
 const staticRoute = express.Router()
 staticRoute.use(cookieParser())
 
 staticRoute.get("/", handleHome)
+// staticRoute.get('/allTasks',checkForUserAuthentication("user"), handleTaskView)
 staticRoute.get('/dashboard', checkForUserAuthentication("user"), handleUserDashboard)
 staticRoute.get("/createTask", checkForUserAuthentication("user"), handleCreateTask)
 

@@ -17,7 +17,7 @@ export async function handleTaskCreation(req, res){
     }
 }
 
-// All Task View
+//AllTask View
 export async function handleTaskView(req, res){
     try {
         const tasks = await TaskModel.find({});
@@ -27,7 +27,6 @@ export async function handleTaskView(req, res){
         return res.json({message:"Something went wrong while fetching the tasks."}) 
     }
 }
-
 // Single Task View
 export async function handleSingleTaskView(req, res){
     try {

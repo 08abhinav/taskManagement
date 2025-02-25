@@ -1,10 +1,5 @@
-import { TaskModel } from "../models/tasks.js"
 export const handleHome = (req, res)=>{
     return res.render("home")
-}
-
-export const handleAllTaskView = (req, res)=>{
-    return res.render("taskView", {user: req.user})
 }
 
 export const handleCreateTask = (req, res)=>{
