@@ -3,17 +3,18 @@ import {TaskModel} from "../models/tasks.js"
 // Task Creation
 export async function handleTaskCreation(req, res){
     try {
-        const {taskName, description, status} = req.body
-        console.log(req.user)
-        if(!taskName || !description) return res.json({message:"All fields are necessary"});
+        const {taskName, description, status} = req.body;
+        if(!taskName || !description) {
+            return res.json({message:"All fields are necessary"});
+        }
         await TaskModel.create({
             taskName,
             description,
-            createdBy: req.user.id,
+            createdBy: req.user,
             status
         })
         return res.redirect('/dashboard')
-    } catch (error) {
+    } catch(error) {
         res.json({message: error.message})
     }
 }
@@ -21,7 +22,7 @@ export async function handleTaskCreation(req, res){
 //AllTask View
 export async function handleTaskView(req, res){
     try {
-        const tasks = await TaskModel.find({createdBy: req.user.id});
+        const tasks = await TaskModel.find({createdBy: req.user});
         const task = tasks.sort((a, b) => a.status - b.status);
         return res.render("taskView", { tasks:task, user:req.user});
     } catch (error) {  

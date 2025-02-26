@@ -5,19 +5,18 @@ import {handleDeleteView, handleTaskCreation, handleUpdateView, handleUpdateTask
 
 const route = express.Router()
 route.use(cookieParser())
-route.use(checkForUserAuthentication("user"))
 
 //creation and view route
-route.post("/tasks",checkForUserAuthentication("user"), handleTaskCreation)
 route.get("/allTasks", checkForUserAuthentication("user"),handleTaskView)
 route.get("/task/:id", checkForUserAuthentication("user"),handleSingleTaskView)
+route.post("/tasks", checkForUserAuthentication("user"), handleTaskCreation)
 
 //update route
 route.get("/:id", checkForUserAuthentication("user"),handleUpdateView)
-route.put("/updateTask/:id", handleUpdateTask)
+route.put("/updateTask/:id", checkForUserAuthentication("user"), handleUpdateTask)
 
 //Delete route
-route.get("/delete/:id", checkForUserAuthentication("user"),handleDeleteView)
-route.delete("/taskdelete/:id",handleTaskDeletion )
+route.get("/delete/:id", checkForUserAuthentication("user"), handleDeleteView)
+route.delete("/taskdelete/:id", checkForUserAuthentication("user"), handleTaskDeletion )
 
 export default route

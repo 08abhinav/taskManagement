@@ -11,9 +11,8 @@ const taskSchema = new Schema({
         require: true
     },
     createdBy:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User",
-        required: true
     },
     status:{
         type: Boolean,   
