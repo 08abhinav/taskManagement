@@ -10,7 +10,7 @@ export async function handleTaskCreation(req, res){
         await TaskModel.create({
             taskName,
             description,
-            createdBy: req.user,
+            createdBy: req.user.id,
             status
         })
         return res.redirect('/dashboard')
@@ -22,7 +22,7 @@ export async function handleTaskCreation(req, res){
 //AllTask View
 export async function handleTaskView(req, res){
     try {
-        const tasks = await TaskModel.find({createdBy: req.user});
+        const tasks = await TaskModel.find({createdBy:req.user.id});
         const task = tasks.sort((a, b) => a.status - b.status);
         return res.render("taskView", { tasks:task, user:req.user});
     } catch (error) {  
@@ -33,7 +33,7 @@ export async function handleTaskView(req, res){
 // Single Task View
 export async function handleSingleTaskView(req, res){
     try {
-        const task = await TaskModel.findById(req.params.id);
+        const task = await TaskModel.findById({createdBy:req.user.id});
         if(!task) return res.json({message: "No tasks found"});
 
         return res.render("singleTaskView", {task:[task], user: req.user})

@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(methodOverride("_method"))
 app.use(cookieParser())
+app.use(checkForUserAuthentication("user"))
 
 app.use('/', staticRoute)
 app.use('/user', userRoute)
