@@ -31,14 +31,13 @@
                                     Not Completed
                                 <% } %>
                             </td>
-                
                             <td><a href="/api/<%- t._id %>" class="fs-3">📝</a></td>
-                            <td><a href="delete/<%- t._id %>" class="fs-3">🗑</a></td>
+                            <td><a href="/api/delete/<%- t._id %>" class="fs-3">🗑</a></td>
                         </tr>
                     <% }); %>
                 </tbody>      
             </table>
-      </div>
+        </div>
       <div class="container text-center mt-3">
         <a class="btn btn-outline-warning w-25" href="/dashboard">Go back</a>
       </div>

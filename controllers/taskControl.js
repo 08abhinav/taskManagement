@@ -33,9 +33,8 @@ export async function handleTaskView(req, res){
 // Single Task View
 export async function handleSingleTaskView(req, res){
     try {
-        const task = await TaskModel.findById({createdBy:req.user.id});
+        const task = await TaskModel.findById(req.params.id);
         if(!task) return res.json({message: "No tasks found"});
-
         return res.render("singleTaskView", {task:[task], user: req.user})
     } catch (error) {
         return res.json({message:"Something went wrong", error:error.message})
@@ -50,12 +49,13 @@ export async function handleUpdateTask(req, res){
             taskName,
             description,
             status: status === "on" ? true : false,
+            createdBy: req.user.id
         }, { new: true });
 
         if (!updatedTask) {
             return res.status(404).json({message: "Task not found"});
         }
-        const tasks = await TaskModel.find({});
+        const tasks = await TaskModel.find({createdBy: req.user.id});
         return res.render("taskView", { tasks });
     } catch (error) {
         return res.json({message:"Error while updation", error:error.message});
@@ -91,8 +91,8 @@ export async function handleTaskDeletion(req, res){
         if (!deletedTask) {
             return res.status(404).json({ message: "Task not found" });
         }
-        const tasks = await TaskModel.find({});
-        return res.render("taskView", { tasks });
+        const tasks = await TaskModel.find({createdBy:req.user.id});
+        return res.redirect("/api/allTasks");
         
     } catch (error) {
         return res.status(500).json({ message: "Error while deleting", error: error.message });

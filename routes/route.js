@@ -6,6 +6,7 @@ import {handleDeleteView, handleTaskCreation, handleUpdateView, handleUpdateTask
 const route = express.Router()
 route.use(cookieParser())
 route.use(checkForUserAuthentication("user"))
+
 //creation and view route
 route.get("/allTasks", checkForUserAuthentication("user"),handleTaskView)
 route.get("/task/:id", checkForUserAuthentication("user"),handleSingleTaskView)
