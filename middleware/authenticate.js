@@ -1,7 +1,7 @@
 import { validateToken } from "../services/authorization.js";
 
 function isPublic(url){
-    const publicRoutes = ['/', '/login', '/signup', '/user/Login', '/user/Signup']
+    const publicRoutes = ['/', '/login', '/signup', '/user/Login', '/user/Signin']
     return publicRoutes.includes(url)
 }
 
