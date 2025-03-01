@@ -3,7 +3,7 @@ import {TaskModel} from "../models/tasks.js"
 // Task Creation
 export async function handleTaskCreation(req, res){
     try {
-        const {taskName, description, status} = req.body;
+        const {taskName, description, priority, status} = req.body;
         if(!taskName || !description) {
             return res.json({message:"All fields are necessary"});
         }
@@ -11,6 +11,7 @@ export async function handleTaskCreation(req, res){
             taskName,
             description,
             createdBy: req.user.id,
+            priority,
             status
         })
         return res.redirect('/dashboard')

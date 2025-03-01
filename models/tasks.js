@@ -14,6 +14,11 @@ const taskSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
+    priority:{
+        type: String,
+        enum: ["High", "Medium", "Low"],
+        default: medium
+    },
     status:{
         type: Boolean,   
         require: true,
