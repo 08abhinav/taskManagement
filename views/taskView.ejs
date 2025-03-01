@@ -7,40 +7,48 @@
 <body>
     <%- include('./partials/nav') %>
         <div class="container mt-4 d-flex justify-content-center">
-            <table class="table table-bordered text-center w-75">
-                <thead class="table-dark">
-                    <tr>
-                    <th>Task No</th>
-                    <th>Task Name</th>
-                    <th>Task Description</th>
-                    <th>Task Status</th>
-                    <th>Update Task</th>
-                    <th>Delete Task</th>
-                    </tr>
-                </thead>
-                <tbody class="table-secondary">
-                    <% tasks.forEach((t, i) => { %>
-                        <tr class="fw-bold">
-                            <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- i + 1 %></td>
-                            <td  > <a href="/api/task/<%- t._id %>" class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.taskName %></a></td>
-                            <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.description %></td>
-                            <td class="<%= t.status ? 'text-success' : 'text-danger' %>">
-                                <% if (t.status) { %>
-                                    Completed
-                                <% } else { %>
-                                    Not Completed
-                                <% } %>
-                            </td>
-                            <td><a href="/api/<%- t._id %>" class="fs-3">📝</a></td>
-                            <td><a href="/api/delete/<%- t._id %>" class="fs-3">🗑</a></td>
+            <% if (locals.tasks && locals.tasks.length > 0) { %>
+                <table class="table table-bordered text-center w-75">
+                    <thead class="table-dark">
+                        <tr>
+                        <th>Task No</th>
+                        <th>Task Name</th>
+                        <th>Task Description</th>
+                        <th>Task Status</th>
+                        <th>Update Task</th>
+                        <th>Delete Task</th>
                         </tr>
-                    <% }); %>
-                </tbody>      
-            </table>
+                    </thead>
+                    <tbody class="table-secondary">
+                        <% tasks.forEach((t, i) => { %>
+                            <tr class="fw-bold">
+                                <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- i + 1 %></td>
+                                <td  > <a href="/api/task/<%- t._id %>" class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.taskName %></a></td>
+                                <td  class="<%= t.status ? 'text-success' : 'text-danger' %>"><%- t.description %></td>
+                                <td class="<%= t.status ? 'text-success' : 'text-danger' %>">
+                                    <% if (t.status) { %>
+                                        Completed
+                                    <% } else { %>
+                                        Not Completed
+                                    <% } %>
+                                </td>
+                                <td><a href="/api/<%- t._id %>" class="fs-3">📝</a></td>
+                                <td><a href="/api/delete/<%- t._id %>" class="fs-3">🗑</a></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>      
+                </table>
+            <% }  else { %>
+                <div class="container text-center mt-3">
+                    <p class="fs-3 text-info fw-bold">No tasks created Yet</p>
+                    <a class="btn btn-outline-warning w-25 me-3" href="/createTask">Create Task</a>
+                    <a class="btn btn-outline-warning w-25" href="/dashboard">Go back</a>
+                </div>
+            <% } %>
         </div>
-      <div class="container text-center mt-3">
-        <a class="btn btn-outline-warning w-25" href="/dashboard">Go back</a>
-      </div>
+        <div class="container text-center mt-3">
+            <a class="btn btn-outline-warning w-25" href="/dashboard">Go back</a>
+        </div>
     <%- include('./partials/script') %>
 </body>
 </html>
