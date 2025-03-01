@@ -18,6 +18,15 @@
             <label for="description" class="form-label fw-bold text-info fs-4">Task Description</label>
             <textarea class="form-control bg-dark text-info border-info" rows="5" id="description" name="description" placeholder="Enter task details"></textarea>
           </div>
+          <div class="mb-3">
+            <label for="priority" class="form-label fs-4 fw-bold text-info">Priority</label>
+            <select class="form-select" name="priority" id="priority" required>
+              <option value="" disabled selected>Select Priority</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input bg-transparent border-info" id="status" name="status">
             <label class="form-check-label fw-bolder text-info fs-5" for="status">Completed</label>
