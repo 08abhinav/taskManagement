@@ -1,4 +1,6 @@
+import mongoose from "mongoose"
 import {TaskModel} from "../models/tasks.js"
+
 export const handleHome = (req, res)=>{
     return res.render("home")
 }
@@ -17,18 +19,18 @@ export const handleSignupView = (req, res)=>{
 
 export const handleUserDashboard = async(req, res)=>{
     try {
-        const user = req.user.id;
+        const user = new mongoose.Types.ObjectId(req.user.id);
 
-        const totalTasks = await Task.countDocuments({ user });
-        const pendingTasks = await Task.countDocuments({ user, status: false });
-        const completedTasks = await Task.countDocuments({ user, status: true });
+        const totalTasks = await TaskModel.countDocuments({ createdBy:user });
+        const pendingTasks = await TaskModel.countDocuments({ createdBy:user, status: false });
+        const completedTasks = await TaskModel.countDocuments({ createdBy:user, status: true });
 
         return res.render("userHome", {user: req.user,
             totalTasks,
             pendingTasks,
             completedTasks
         })        
-        
+
     } catch (error) {
         return res.message({error:error.message})
     }
