@@ -57,7 +57,7 @@ export async function handleUpdateTask(req, res){
             return res.status(404).json({message: "Task not found"});
         }
         const tasks = await TaskModel.find({createdBy: req.user.id});
-        return res.render("taskView", { tasks });
+        return res.redirect("/api/allTasks");
     } catch (error) {
         return res.json({message:"Error while updation", error:error.message});
     }
