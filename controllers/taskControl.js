@@ -21,15 +21,24 @@ export async function handleTaskCreation(req, res){
 }
 
 //AllTask View
-export async function handleTaskView(req, res){
+export async function handleTaskView(req, res) {
     try {
-        const tasks = await TaskModel.find({createdBy:req.user.id});
-        const task = tasks.sort((a, b) => a.status - b.status);
-        return res.render("taskView", { tasks:task, user:req.user});
+        const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
+
+        const tasks = await TaskModel.find({ createdBy: req.user.id }).lean();
+        tasks.sort((a, b) => {
+            if (priorityOrder[a.priority] !== priorityOrder[b.priority]) {
+                return priorityOrder[a.priority] - priorityOrder[b.priority];
+            }
+            return a.status - b.status;
+        });
+
+        return res.render("taskView", { tasks, user: req.user });
     } catch (error) {  
-        return res.json({message:"Something went wrong while fetching the tasks."}) 
+        return res.json({ message: "Something went wrong while fetching the tasks." });
     }
 }
+
 
 // Single Task View
 export async function handleSingleTaskView(req, res){
